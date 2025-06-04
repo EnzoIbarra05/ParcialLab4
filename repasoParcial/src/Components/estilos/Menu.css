@@ -1,0 +1,31 @@
+.instrumentos {
+  padding: 20px;
+}
+
+/* Contenedor que envuelve todas las tarjetas */
+.ItemInstrumento {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Estilo de cada tarjeta */
+.item-instrumento .card {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.item-instrumento .card:hover {
+  transform: scale(1.03);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  padding: 10px;
+}
