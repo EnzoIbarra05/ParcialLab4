@@ -16,10 +16,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Route path="/menu" element={<Menu />} />
       <Route path="/location" element={<Location/>}/>
       <Route path="/detalle">
-        <Route path=":idplato" element={<DetalleInstrumento />} />
+        <Route path=":idinstrumento" element={<DetalleInstrumento />} />
       </Route>
       <Route path="/grilla" element={<GrillaInstrumentos />} />
-      <Route path="/formulario/:idplato" element={<Formulario />}/>
+      <Route path="/formulario/:idinstrumento" element={<Formulario />}/>
       <Route path="*" element={<Menu />} />
     </Routes>
   </BrowserRouter>

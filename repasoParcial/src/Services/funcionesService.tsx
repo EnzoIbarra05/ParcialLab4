@@ -31,7 +31,7 @@ export async function getInstrumentoXIdFecth(id:number){
 }
 
 export async function deleteInstrumentoXId(id: number) {
-	let urlServer = `http://localhost:8080/api/instrumentos/${id}`;
+	const urlServer = `http://localhost:8080/api/instrumentos/${id}`;
 	
 	const response = await fetch(urlServer, {
 		method: 'DELETE',

@@ -1,7 +1,7 @@
 export default class Instrumento{
  id:number=0;
- cantidad_vendida: number= 0;
- costo_envio:string="";
+ cantidadVendida: number= 0;
+ costoEnvio:string="";
  descripcion:string="";
  imagen:string="";
  instrumento:string="";

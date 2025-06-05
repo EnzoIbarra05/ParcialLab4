@@ -28,7 +28,7 @@ export default function Componentes(){
     <div className="ItemInstrumento">
    {instrumentos.map((instru:Instrumento, index) => {
                 return(
-                        <ItemInstrumento instruObjet={instru} key={index} id={instru.id} instrumento={instru.instrumento} cantidad_vendida={instru.cantidad_vendida} costo_envio={instru.costo_envio} descripcion={instru.descripcion} imagen={instru.imagen} marca={instru.marca} modelo={instru.modelo} precio={instru.precio}  />
+                        <ItemInstrumento instruObjet={instru} key={index} id={instru.id} instrumento={instru.instrumento} cantidadVendida={instru.cantidadVendida} costoEnvio={instru.costoEnvio} descripcion={instru.descripcion} imagen={instru.imagen} marca={instru.marca} modelo={instru.modelo} precio={instru.precio}  />
                     )})}
     
     </div>
