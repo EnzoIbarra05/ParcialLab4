@@ -3,7 +3,7 @@ import Instrumento from "../models/Instrumento";
 import { getInstrumentoJSONFetch } from "../Services/funcionesService";
 import MenuOptions from "./MenuOptions";
 import "./estilos/GrillaInstrumentos.css"
-
+import { deleteInstrumentoXId } from "../Services/funcionesService";
 
 export default function GrillaInstrumentos(){
 
@@ -18,10 +18,15 @@ export default function GrillaInstrumentos(){
           getInstrumentos();
         }, []);
 
+ const deleteInstrumento = async (idIns:number) => {
+      await deleteInstrumentoXId(idIns);
+      window.location.reload();
+    }
     return(<>
 
  <div className="title"><h1>Grilla Instrumentos</h1></div>   
  <div className="navbar"><MenuOptions/></div>
+ <div className="button-add"><a className="btn btn-success" href={`/formulario/0`}>Nuevo Instrumento +</a></div>
 <div className="container">
 <table className="table table-striped-columns">
 <thead className="table-light">
@@ -42,6 +47,7 @@ export default function GrillaInstrumentos(){
         <td>{ins.modelo}</td>
         <td>{ins.costoEnvio}</td>
         <td>{ins.precio} </td>
+        <td><a href={`/formulario/` + ins.id}><button type="button" className="btn btn-info edit">Editar</button></a><button type="button" className="btn btn-danger" onClick={() => deleteInstrumento(ins.id)}>Eliminar</button></td>
     </tr>
     
     )}
