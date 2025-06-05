@@ -7,7 +7,7 @@ export default class Instrumento{
  instrumento:string="";
  marca:string="";
  modelo:string="";
- precio:string="";
+ precio:number=0;
  categoriaId:number=0;
 
 }

@@ -47,24 +47,23 @@ export async function deleteInstrumentoXId(id: number) {
 }
 
 
-export async function saveInstrumento(formdata : FormData) {
-    const idRaw = formdata.get("id");
-	const id = idRaw !== null && idRaw !== "" ? Number(idRaw) : null;
+export async function saveInstrumento(instrumento: Instrumento, formData: FormData) {
+    const id = instrumento.id;
+    let urlServer = 'http://localhost:8080/api/instrumentos';
+    let method = "POST";
 
-	let urlServer = 'http://localhost:8080/api/insert';
-	let method:string = "POST";
-	if((typeof id === 'number' && id > 0) ){
-		urlServer = 'http://localhost:8080/api/update';
-		method = "PUT";
-	}
-	await fetch(urlServer, {
-	  "method": method,
-	  "body": JSON.stringify(formdata),
-	  "headers": {
-		"Content-Type": 'application/json'
-	  }
-	});
+    if (id && id > 0) {
+        urlServer = `http://localhost:8080/api/instrumentos/${id}`;
+        method = "PUT";
+    }
+
+    await fetch(urlServer, {
+        method: method,
+        body: formData,
+    });
 }
+
+
 
 
 
