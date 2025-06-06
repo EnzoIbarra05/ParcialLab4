@@ -1,0 +1,24 @@
+.precio{
+    font-size: 20px;
+}
+.cart {
+  width: 400px; /* aumenta el ancho a 400px, ajusta a tu preferencia */
+  max-width: 100%; /* para que no se salga de la pantalla en dispositivos pequeños */
+  padding: 1rem;
+  border: 1px solid #ccc; /* opcional, para que se note el contenedor */
+  box-sizing: border-box; /* para que el padding no aumente el ancho total */
+  
+}
+.boton-json{
+    margin-left: 10px;
+}
+.cart-item {
+  border: 1px solid #ccc;   /* borde gris claro */
+  border-radius: 6px;       /* bordes redondeados opcional */
+  padding: 8px;
+  margin-bottom: 10px;      /* separación entre items */
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

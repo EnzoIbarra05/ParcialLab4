@@ -1,5 +1,6 @@
 .instrumentos {
   padding: 20px;
+  display: flex;
 }
 
 /* Contenedor que envuelve todas las tarjetas */
@@ -7,6 +8,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
+  width: 70%;
 }
 
 /* Estilo de cada tarjeta */
@@ -28,4 +30,21 @@
   height: 180px;
   object-fit: contain;
   padding: 10px;
+}
+.cart{
+  width: 30%;
+  margin-left: 50px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.carrito-title {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.carrito-title img{
+  width: 60px;
+  margin-left: 10px;
 }

@@ -4,6 +4,7 @@ import MenuOptions from './MenuOptions';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getInstrumentoXIdFecth, saveInstrumento } from '../Services/funcionesService';
 import Categoria from '../models/Categoria';
+import "./estilos/Formulario.css"
 
 export default function Formulario() {
     const navigate = useNavigate();
@@ -15,8 +16,8 @@ export default function Formulario() {
 
     const getInstrumento = async () => {
         if (Number(idinstrumento) !== 0) {
-            let instrumentoSelect: Instrumento = await getInstrumentoXIdFecth(Number(idinstrumento));
-            setInstrumento(instrumentoSelect);
+            const insSelect:Instrumento = await getInstrumentoXIdFecth(Number(idinstrumento));
+            setInstrumento(insSelect);
         } else {
             setInstrumento(new Instrumento());
         }
@@ -82,6 +83,7 @@ export default function Formulario() {
     return (
         <>
             <MenuOptions />
+            <div className='formulario'>
             <div className="center">
                 <div className="mb-3">
                     <label htmlFor="txtNombre" className="form-label">Nombre Instrumento:</label>
@@ -90,13 +92,10 @@ export default function Formulario() {
                         defaultValue={instrumento.instrumento}
                         onChange={e => instrumento.instrumento = e.target.value} />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="txtPrecio" className="form-label">Precio</label>
-                    <input type="number" id='txtPrecio' className="form-control"
-                        placeholder="Ingrese el precio"
-                        value={instrumento.precio}
-                        onChange={e => instrumento.precio = Number(e.target.value)} />
-                </div>
+                 <div className="mb-3">
+                <label htmlFor="txtPrecio" className="form-label">Precio</label>
+                <input type="text" id='txtPrecio' className="form-control" placeholder="Ingrese el precio" defaultValue={instrumento.precio || ""} onChange={e => instrumento.precio = Number(e.target.value)}/>
+            </div>
                 <div className="mb-3">
                     <label htmlFor="txtEnvio" className="form-label">Costo de envío</label>
                     <input type="text" id='txtEnvio' className="form-control"
@@ -173,8 +172,6 @@ export default function Formulario() {
 )}
 
     </div>
-
-
                 <div>
                     <p style={{ color: 'red', lineHeight: 5, padding: 5 }}>{txtValidacion}</p>
                 </div>
@@ -184,6 +181,7 @@ export default function Formulario() {
                         Guardar
                     </button>
                 </div>
+            </div>
             </div>
         </>
     );

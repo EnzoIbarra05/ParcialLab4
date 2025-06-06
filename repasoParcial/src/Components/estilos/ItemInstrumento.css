@@ -1,0 +1,24 @@
+.iconoMasMenos {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  margin: 0 8px;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.iconoMasMenos:hover {
+  background-color: #d9edf7;
+  color: #007bff;
+  border-color: #007bff;
+  transform: scale(1.1);
+}
