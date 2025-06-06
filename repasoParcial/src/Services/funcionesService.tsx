@@ -14,6 +14,19 @@ export async function getInstrumentoJSONFetch(){
 	console.log(response);
 	return await response.json();
 }
+export async function getCategoriasJSONFetch(){
+	const urlServer = 'http://localhost:8080/api/categorias';
+	const response = await fetch(urlServer, {
+		method: 'GET',
+        headers: {
+			'Content-type': 'application/json',
+			'Access-Control-Allow-Origin':'*'
+		},
+        mode: 'cors'
+	});
+	console.log(response);
+	return await response.json();
+}
 
 export async function getInstrumentoXIdFecth(id:number){
 	const urlServer = 'http://localhost:8080/api/instrumentos/'+id;
@@ -63,6 +76,21 @@ export async function saveInstrumento(instrumento: Instrumento, formData: FormDa
     });
 }
 
+export async function savePlato(instrumento?: Instrumento) {
+	let urlServer = 'http://localhost:8080/api/insert';
+	let method:string = "POST";
+	if(instrumento && instrumento.id > 0){
+		urlServer = 'http://localhost:8080/api/update';
+		method = "PUT";
+	}
+	await fetch(urlServer, {
+	  "method": method,
+	  "body": JSON.stringify(instrumento),
+	  "headers": {
+		"Content-Type": 'application/json'
+	  }
+	});
+}
 
 
 
