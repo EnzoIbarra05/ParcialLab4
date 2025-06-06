@@ -9,6 +9,7 @@ export default function GrillaInstrumentos() {
   const [instrumentos, setInstrumentos] = useState<Instrumento[]>([]);
   const [categorias, setCategorias] = useState<Categoria[]>([]);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState<number>(0);
+  const [precioMaximo, setPrecioMaximo] = useState<number>(0);
 
   useEffect(() => {
     const cargarDatos = async () => {
@@ -22,17 +23,19 @@ export default function GrillaInstrumentos() {
 
   const deleteInstrumento = async (idIns: number) => {
     await deleteInstrumentoXId(idIns);
-    // Mejor usar setInstrumentos en lugar de recargar toda la página:
     const actualizados = instrumentos.filter(i => i.id !== idIns);
     setInstrumentos(actualizados);
   };
 
-  // 🔎 Filtrar por categoría seleccionada
-  const instrumentosFiltrados = instrumentos.filter((ins) =>
-    categoriaSeleccionada === 0
-      ? true
-      : Number(ins.categoria?.id) === Number(categoriaSeleccionada)
-  );
+  // Filtrar por categoría y precio máximo
+  const instrumentosFiltrados = instrumentos.filter((ins) => {
+    const coincideCategoria =
+      categoriaSeleccionada === 0 || Number(ins.categoria?.id) === Number(categoriaSeleccionada);
+    const coincidePrecio =
+      precioMaximo === 0 || Number(ins.precio) <= precioMaximo;
+
+    return coincideCategoria && coincidePrecio;
+  });
 
   return (
     <>
@@ -56,6 +59,16 @@ export default function GrillaInstrumentos() {
             ))}
           </select>
         </div>
+
+        <div className="filtro-precio">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Precio máximo"
+            value={precioMaximo === 0 ? "" : precioMaximo}
+            onChange={(e) => setPrecioMaximo(Number(e.target.value) || 0)}
+          />
+        </div>
       </div>
 
       <div className="tipo-contain">
@@ -68,16 +81,17 @@ export default function GrillaInstrumentos() {
               <td><b>Costo de Envío</b></td>
               <td><b>Precio</b></td>
               <td><b>Acciones</b></td>
-              <td><b>categoria</b></td>
+              <td><b>Categoría</b></td>
             </tr>
           </thead>
           <tbody>
-            {instrumentosFiltrados.map((ins) =>
-              
-                <tr    key={ins.id}
-      style={{
-        backgroundColor: ins.costoEnvio?.trim() === "G" ? "lightgreen" : "white",
-      }}>
+            {instrumentosFiltrados.map((ins) => (
+              <tr
+                key={ins.id}
+                style={{
+                  backgroundColor: ins.costoEnvio?.trim() === "G" ? "lightgreen" : "white",
+                }}
+              >
                 <td>{ins.instrumento}</td>
                 <td>{ins.marca}</td>
                 <td>{ins.modelo}</td>
@@ -91,7 +105,7 @@ export default function GrillaInstrumentos() {
                 </td>
                 <td>{ins.categoria?.denominacion}</td>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
       </div>
