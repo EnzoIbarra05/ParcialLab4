@@ -19,3 +19,15 @@
 .tipo-contain{
     margin: 0px 100px;
 }
+
+.tablax {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+

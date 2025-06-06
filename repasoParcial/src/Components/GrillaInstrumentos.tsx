@@ -59,7 +59,7 @@ export default function GrillaInstrumentos() {
       </div>
 
       <div className="tipo-contain">
-        <table className="table table-striped-columns">
+        <table className="tablax">
           <thead className="table-light">
             <tr>
               <td><b>Instrumento</b></td>
@@ -73,7 +73,11 @@ export default function GrillaInstrumentos() {
           </thead>
           <tbody>
             {instrumentosFiltrados.map((ins) =>
-              <tr key={ins.id}>
+              
+                <tr    key={ins.id}
+      style={{
+        backgroundColor: ins.costoEnvio?.trim() === "G" ? "lightgreen" : "white",
+      }}>
                 <td>{ins.instrumento}</td>
                 <td>{ins.marca}</td>
                 <td>{ins.modelo}</td>
